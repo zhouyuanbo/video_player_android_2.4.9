@@ -204,6 +204,16 @@ final class VideoPlayer {
           }
 
           @Override
+          public void onPositionDiscontinuity(Player.PositionInfo oldPosition, Player.PositionInfo newPosition, int reason) {
+            if(reason==Player.DISCONTINUITY_REASON_AUTO_TRANSITION){
+              Map<String, Object> event = new HashMap<>();
+              event.put("event", "loopPlaybackEnd");
+              event.put("isLoopPlaybackEnd", true);
+              eventSink.success(event);
+            }
+          }
+
+          @Override
           public void onPlaybackStateChanged(final int playbackState) {
             if (playbackState == Player.STATE_BUFFERING) {
               setBuffering(true);
