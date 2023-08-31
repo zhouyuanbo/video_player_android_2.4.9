@@ -155,8 +155,8 @@ class AndroidVideoPlayer extends VideoPlayerPlatform {
           );
         case 'loopPlaybackEnd':
           return VideoEvent(
-            eventType: VideoEventType.isLoopPlaybackEnd,
-            isPlaying: map['isLoopPlaybackEnd'] as bool,
+            eventType: VideoEventType.loopPlaybackEnd,
+            isLoopPlaybackEnd: map['isLoopPlaybackEnd'] as bool,
           );
         default:
           return VideoEvent(eventType: VideoEventType.unknown);
